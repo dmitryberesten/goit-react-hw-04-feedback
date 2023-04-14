@@ -10,21 +10,15 @@ export const App = () => {
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
 
-  const updateGood = () => { // оновлення зачення на +1
-    setGood(prevSt => prevSt + 1);
-  };
-
-  const updateNeutral = () => { // оновлення зачення на +1
-    setNeutral(prevSt => prevSt + 1);
-  };
-
-  const updateBad = () => { // оновлення зачення на +1
-    setBad(prevSt => prevSt + 1);
-  };
-
   const countTotalFeedback = () => { // підрахунок загальної кількості відгуків
     return good + neutral + bad;
   };
+
+  const onLeaveFeedback = (option) => {
+    if (option === 'good') setGood(prev => prev + 1);
+    if (option === 'neutral') setNeutral(prev => prev + 1);
+    if (option === 'bad') setBad(prev => prev + 1);
+  }
 
   // підрахунок відсотка позитивних відгуків
   const countPositiveFeedbackPercentage = () => {
@@ -36,7 +30,7 @@ export const App = () => {
       <Section title="Please leave feedback">
         <FeedbackOptions
           options={Object.keys({ good, neutral, bad })}
-          onLeaveFeedback={[updateGood, updateNeutral, updateBad]} // масив функцій
+          onLeaveFeedback={onLeaveFeedback}
         />
       </Section>
       <Section title="Statistics">

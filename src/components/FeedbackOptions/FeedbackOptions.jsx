@@ -7,14 +7,12 @@ export const FeedbackOptions = ({ onLeaveFeedback, options }) => {
     <Container>
 
       {/* Генеруємо список кнопок на основі масиву options */}
-      {options.map((name, i) => {
+      {options.map((name) => {
         return (
           <Button
-            key={i + 1}
+            key={name}
             hoverType={name}
-            onClick={() => { // при кліку на кнопку викликаємо функцію onLeaveFeedback з індексом кнопки
-              onLeaveFeedback[i](name); // передаємо в функцію ім'я кнопки
-            }}
+            onClick={() => onLeaveFeedback(name)}
           >
             {name}
           </Button>
@@ -26,7 +24,7 @@ export const FeedbackOptions = ({ onLeaveFeedback, options }) => {
 
 // типізація пропсів
 FeedbackOptions.propTypes = {
-  onLeaveFeedback: PropTypes.arrayOf(PropTypes.func).isRequired, // масив функцій
+  onLeaveFeedback: PropTypes.func.isRequired, // функція
   options: PropTypes.arrayOf(PropTypes.oneOf(['good', 'neutral', 'bad']))
-    .isRequired, // масив з 3-х елементів
+    .isRequired,
 };
