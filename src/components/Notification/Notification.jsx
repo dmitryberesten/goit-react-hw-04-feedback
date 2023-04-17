@@ -10,3 +10,5 @@ export const Notification = ({ message }) => {
 Notification.propTypes = {
   message: PropTypes.string.isRequired // тип пропса message - рядок
 };
+
+// Діма Берестень

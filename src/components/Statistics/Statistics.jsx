@@ -40,3 +40,5 @@ Statistics.propTypes = {
   total: PropTypes.number.isRequired,
   positivePercentage: PropTypes.func.isRequired, // функція
 };
+
+// Діма Берестень
